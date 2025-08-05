@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio - Octavio Llorens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background: #f9f9f9;
+      color: #000;
+    }
+    .contenedor {
+      max-width: 1000px;
+      margin: 5rem auto 0 auto;
+      padding: 0 2rem;
+    }
+    header {
+      background: #f9f9f9;
+      color: #8a8787;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    nav a {
+      color: rgb(181, 180, 180);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 3s ease;
+    }
+    nav a:hover {
+      color: #555;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    main {
+      padding: 0rem 0;
+    }
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .carousel-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 1rem auto;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .carousel {
+      position: relative;
+      height: 800px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2.5s ease-in-out;
+    }
+    .carousel img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .caption {
+      text-align: center;
+      margin-top: 1rem;
+      font-style: italic;
+      color: #666;
+      font-size: 1.11rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <h1>OCTAVIO LLORENS</h1>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="obras.html">Obras</a>
+        <a href="biografia.html">Biografía</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2></h2>
+      <a href="obras.html" class="carousel-container" aria-label="Ir a galería de esculturas">
+        <div class="carousel">
+          <img src="img/escultura1.png" alt="Crisálida" class="active" />
+          <img src="img/escultura3.jpg" alt="San Vicente Ferrer" />
+        </div>
+      </a>
+      <p class="caption">Haz clic en la imagen para ver la galería completa</p>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 OCTAVIO LLORENS. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.carousel img');
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 6000);
+  </script>
+</body>
+</html>
