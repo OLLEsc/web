@@ -18,7 +18,7 @@
       padding: 0 2rem;
     }
     header {
-      background: #ffffff;
+      background: #f9f9f9;
       color: #8a8787;
       display: flex;
       align-items: center;
@@ -60,6 +60,7 @@
       text-align: justify;
       font-family: 'Cinzel', serif;
       font-size: 1.1rem;
+      color: #666;
       margin-bottom: 1rem;
     }
     .caption {
@@ -134,8 +135,16 @@
         margin: 1rem 0;
         padding: 0 2rem;
       }
-    }
-  </style>
+  .correo {
+    color: #000000;        /* color negro */
+    text-decoration: underline;  /* quita subrayado */
+    font-weight: bold;      /* opcional: más visible */
+  }
+
+  .correo:hover {
+    color: #555555;         /* cambia a gris al pasar el ratón */
+  }
+</style>
 </head>
 <body>
   <div class="contenedor">
@@ -161,7 +170,7 @@
     <main>
       <h2>
         Puedes ponerte en contacto conmigo mediante esta dirección:<br>
-        <a href="mailto:escultor@octaviollorens.com">escultor@octaviollorens.com</a>
+        <a href="mailto:tuemail@dominio.com" class="correo">escultor@octaviollorens.com</a>
 
      </h2>
 <style>
