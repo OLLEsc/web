@@ -25,37 +25,78 @@
       justify-content: space-between;
       padding: 1.5rem 0;
       border-bottom: 1px solid #ddd;
-      flex-wrap: wrap; /* permite que los elementos bajen si no caben */
+      position: relative;
     }
     header h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 5vw, 1.8rem); /* se adapta al ancho de pantalla */
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
       margin: 0;
       font-weight: 700;
       letter-spacing: 0.1em;
-      flex: 1 1 100%; /* en móviles ocupa toda la fila */
-      text-align: center;
-      margin-bottom: 0.5rem;
+      white-space: nowrap;
     }
+
+    /* Menú normal (desktop) */
     nav {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
+      gap: 1.5rem;
     }
     nav a {
       color: rgb(181, 180, 180);
       text-decoration: none;
-      margin: 0.5rem 1rem;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
     nav a:hover {
       color: #555;
     }
+
+    /* Botón hamburguesa */
+    .hamburguesa {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #888;
+      z-index: 1001;
+      transition: transform 0.3s ease;
+    }
+
+    /* Menú móvil */
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background: #f9f9f9;
+        border-top: 1px solid #ddd;
+
+        /* Animación elegante */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      nav a {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #eee;
+        font-size: 1rem;
+        text-align: center;
+      }
+      nav.activo {
+        max-height: 500px; /* suficiente espacio para todos los enlaces */
+      }
+      .hamburguesa {
+        display: block;
+      }
+    }
+
     main {
       padding: 2rem 0;
     }
@@ -86,20 +127,17 @@
       color: #666;
       margin-top: 3rem;
     }
-
-    /* Ajustes extra para móviles muy pequeños */
-    @media (max-width: 480px) {
-      nav a {
-        font-size: 0.85rem;
-        margin: 0.3rem 0.6rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="contenedor">
     <header>
       <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
+
+      <!-- Botón hamburguesa -->
+      <button class="hamburguesa" aria-label="Abrir menú">☰</button>
+
+      <!-- Menú -->
       <nav>
         <a href="index.html">Inicio</a>
         <a href="obras.html">Obras</a>
@@ -127,5 +165,25 @@
       <p>&copy; 2025 OCTAVIO LLORENS. Todos los derechos reservados.</p>
     </footer>
   </div>
+
+  <script>
+    const btn = document.querySelector(".hamburguesa");
+    const nav = document.querySelector("nav");
+    const links = document.querySelectorAll("nav a");
+
+    btn.addEventListener("click", () => {
+      nav.classList.toggle("activo");
+      btn.textContent = nav.classList.contains("activo") ? "✕" : "☰";
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("activo");
+        btn.textContent = "☰";
+      });
+    });
+  </script>
 </body>
 </html>
+
