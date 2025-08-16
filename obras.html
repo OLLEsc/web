@@ -25,6 +25,7 @@
       justify-content: space-between;
       padding: 1.5rem 0;
       border-bottom: 1px solid #ddd;
+      position: relative;
     }
     header h1 {
       font-family: 'Cinzel', serif;
@@ -41,11 +42,9 @@
       font-size: 1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: color 3s ease;
+      transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #555;
-    }
+    nav a:hover { color: #555; }
     nav {
       display: flex;
       align-items: center;
@@ -81,16 +80,12 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
-    /* Responsive */
+    /* Responsive galería */
     @media (max-width: 900px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+      .gallery { grid-template-columns: 1fr; }
     }
 
     /* Lightbox */
@@ -129,9 +124,7 @@
       cursor: pointer;
       user-select: none;
     }
-    .close:hover {
-      color: #000;
-    }
+    .close:hover { color: #000; }
     .prev, .next {
       position: absolute;
       top: 50%;
@@ -145,9 +138,7 @@
       transform: translateY(-50%);
       transition: background 0.3s;
     }
-    .prev:hover, .next:hover {
-      background: rgba(255,255,255,0.9);
-    }
+    .prev:hover, .next:hover { background: rgba(255,255,255,0.9); }
     .prev { left: 20px; }
     .next { right: 20px; }
     .caption {
@@ -158,20 +149,109 @@
       text-align: center;
       max-width: 90%;
     }
+
+   /* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  background: none;
+  border: none;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: rgb(181, 180, 180);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: 0.4s;
+}
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f9f9f9;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav a {
+    margin: 1rem 0;
+    padding: 0 2rem;
+  }
+}
+
+    /* Menú de navegación */
+    nav {
+      display: flex;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+    }
+    nav a {
+      color: rgb(181, 180, 180);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
   </style>
 </head>
 <body>
   <div class="contenedor">
     <header>
-      <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
-      <nav>
-        <a href="index.html">Inicio</a>
-        <a href="obras.html">Obras</a>
-        <a href="biografia.html">Biografía</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="news.html">NEWS</a>
-      </nav>
-    </header>
+  <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
+
+  <!-- Botón hamburguesa -->
+  <button class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Menú de navegación -->
+  <nav id="nav">
+    <a href="index.html">Inicio</a>
+    <a href="obras.html">Obras</a>
+    <a href="biografia.html">Biografía</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="news.html">NEWS</a>
+  </nav>
+</header>
+
 
     <main>
       <!-- Galería -->
@@ -219,19 +299,13 @@
     }
 
     images.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        showImage(index);
-      });
+      img.addEventListener('click', () => { showImage(index); });
     });
 
-    closeBtn.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
+    closeBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
 
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.display = 'none';
-      }
+      if (e.target === lightbox) lightbox.style.display = 'none';
     });
 
     prevBtn.addEventListener('click', (e) => {
@@ -248,15 +322,28 @@
 
     document.addEventListener('keydown', (e) => {
       if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') prevBtn.click();
-        if (e.key === 'ArrowRight') nextBtn.click();
-        if (e.key === 'Escape') closeBtn.click();
+        if (e.key === 'ArrowLeft') { prevBtn.click(); }
+        if (e.key === 'ArrowRight') { nextBtn.click(); }
+        if (e.key === 'Escape') { closeBtn.click(); }
       }
     });
-  </script>
-</body>
-</html>
-  <script>
+
+    // Menú hamburguesa
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    const links = nav.querySelectorAll('a');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      toggle.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
