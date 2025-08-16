@@ -19,17 +19,16 @@
     }
     header {
       background: #f9f9f9;
-      color: #8a8787;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 1.2rem 0;
+      align-items: center;
+      padding: 1.5rem 1rem; /* más padding horizontal */
       border-bottom: 1px solid #ddd;
-      flex-wrap: nowrap; /* nunca se parte */
+      flex-wrap: nowrap; /* nunca baja de línea */
     }
     header h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1rem, 3vw, 1.8rem); /* se adapta a la pantalla */
+      font-size: clamp(1.2rem, 4vw, 1.8rem); /* tamaño mínimo mayor */
       margin: 0;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -38,22 +37,21 @@
     nav {
       display: flex;
       align-items: center;
-      gap: clamp(0.5rem, 2vw, 2rem); /* separación adaptativa */
+      gap: clamp(1rem, 3vw, 2rem); /* más espacio entre enlaces */
     }
     nav a {
       color: rgb(181, 180, 180);
       text-decoration: none;
       font-weight: 600;
-      font-size: clamp(0.7rem, 1.5vw, 1rem); /* reduce en móviles */
+      font-size: clamp(0.9rem, 2vw, 1rem); /* no tan pequeño en móviles */
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      transition: color 0.3s ease;
       white-space: nowrap;
+      transition: color 0.3s ease;
     }
     nav a:hover {
       color: #555;
     }
-
     main {
       padding: 2rem 0;
     }
@@ -108,8 +106,8 @@
 
       <div class="noticia">
         <span class="fecha">25 de julio de 2025</span>
-        <h2>Exposicion en Marte</h2>
-        <p>Octavio Llorens es un crack y por eso es el primer artista universal en exponer una colección en el planeta Marte. </p>
+        <h2>Exposición en Marte</h2>
+        <p>Octavio Llorens es un crack y por eso es el primer artista universal en exponer una colección en el planeta Marte.</p>
       </div>
     </main>
 
@@ -119,3 +117,5 @@
   </div>
 </body>
 </html>
+
+
