@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>News - Octavio Llorens</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
   <style>
@@ -19,39 +19,96 @@
     }
     header {
       background: #f9f9f9;
+      color: #8a8787;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 1rem; /* más padding horizontal */
+      justify-content: space-between;
+      padding: 1.5rem 0;
       border-bottom: 1px solid #ddd;
-      flex-wrap: nowrap; /* nunca baja de línea */
+      position: relative;
     }
     header h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 4vw, 1.8rem); /* tamaño mínimo mayor */
+      font-size: 1.5rem;
       margin: 0;
       font-weight: 700;
       letter-spacing: 0.1em;
-      white-space: nowrap;
     }
     nav {
       display: flex;
       align-items: center;
-      gap: clamp(1rem, 3vw, 2rem); /* más espacio entre enlaces */
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
     nav a {
       color: rgb(181, 180, 180);
       text-decoration: none;
+      margin-left: 2rem;
       font-weight: 600;
-      font-size: clamp(0.9rem, 2vw, 1rem); /* no tan pequeño en móviles */
-      letter-spacing: 0.05em;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      white-space: nowrap;
       transition: color 0.3s ease;
     }
     nav a:hover {
       color: #555;
     }
+
+    /* Estilo para el menú hamburguesa */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      justify-content: space-between;
+      z-index: 2;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background: #555;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    /* Animación “X” */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #f9f9f9;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        border-bottom: 1px solid #ddd;
+      }
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      nav a {
+        margin: 1rem 0;
+        padding: 0 2rem;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
     main {
       padding: 2rem 0;
     }
@@ -88,7 +145,15 @@
   <div class="contenedor">
     <header>
       <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
-      <nav>
+
+      <!-- Botón hamburguesa -->
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="nav">
         <a href="index.html">Inicio</a>
         <a href="obras.html">Obras</a>
         <a href="biografia.html">Biografía</a>
@@ -106,8 +171,8 @@
 
       <div class="noticia">
         <span class="fecha">25 de julio de 2025</span>
-        <h2>Exposición en Marte</h2>
-        <p>Octavio Llorens es un crack y por eso es el primer artista universal en exponer una colección en el planeta Marte.</p>
+        <h2>Menu de prueba</h2>
+        <p>Prueba con el menu. </p>
       </div>
     </main>
 
@@ -115,7 +180,25 @@
       <p>&copy; 2025 OCTAVIO LLORENS. Todos los derechos reservados.</p>
     </footer>
   </div>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    const links = nav.querySelectorAll('a');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      toggle.classList.toggle('active');
+    });
+
+    // Cerrar menú al pulsar un enlace
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
-
 
