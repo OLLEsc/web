@@ -6,9 +6,9 @@
   <title>Inicio - Octavio Llorens</title>
   <link rel="icon" href="https://octaviollorens.com/favicon.ico" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -30,6 +30,7 @@
       justify-content: space-between;
       padding: 1.5rem 0;
       border-bottom: 1px solid #ddd;
+      position: relative;
     }
     header h1 {
       font-family: 'Cinzel', serif;
@@ -37,6 +38,75 @@
       margin: 0;
       font-weight: 700;
       letter-spacing: 0.1em;
+    }
+
+    /* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  background: none;
+  border: none;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: rgb(181, 180, 180);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: 0.4s;
+}
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f9f9f9;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav a {
+    margin: 1rem 0;
+    padding: 0 2rem;
+  }
+}
+
+    /* Menú de navegación */
+    nav {
+      display: flex;
+      align-items: center;
+      font-family: 'Cinzel', serif;
     }
     nav a {
       color: rgb(181, 180, 180);
@@ -46,23 +116,12 @@
       font-size: 1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: color 3s ease;
+      transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #555;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    main {
-      padding: 0rem 0;
-    }
-    h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-    }
+    nav a:hover { color: #555; }
+
+    main { padding: 0rem 0; }
+    h2 { font-family: 'Cinzel', serif; font-size: 0.8rem; margin-bottom: 1rem; }
     .carousel-container {
       width: 100%;
       max-width: 700px;
@@ -71,10 +130,7 @@
       position: relative;
       cursor: pointer;
     }
-    .carousel {
-      position: relative;
-      height: 800px;
-    }
+    .carousel { position: relative; height: 800px; }
     .carousel img {
       position: absolute;
       top: 0;
@@ -85,10 +141,7 @@
       opacity: 0;
       transition: opacity 2.5s ease-in-out;
     }
-    .carousel img.active {
-      opacity: 1;
-      z-index: 1;
-    }
+    .carousel img.active { opacity: 1; z-index: 1; }
     .caption {
       text-align: center;
       margin-top: 1rem;
@@ -103,19 +156,52 @@
       color: #666;
       margin-top: 3rem;
     }
+
+    /* Responsive menu hamburguesa */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #f9f9f9;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        border-top: 1px solid #ddd;
+        z-index: 1000;
+      }
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      nav a { margin: 1rem 0; padding: 0 2rem; }
+    }
   </style>
 </head>
 <body>
   <div class="contenedor">
     <header>
       <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
-      <nav>
-        <a href="index.html">Inicio</a>
-        <a href="obras.html">Obras</a>
-        <a href="biografia.html">Biografía</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="news.html">NEWS</a>
-      </nav>
+
+     <!-- Botón hamburguesa -->
+<button class="menu-toggle" id="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- Menú de navegación -->
+<nav id="nav">
+  <a href="index.html">Inicio</a>
+  <a href="obras.html">Obras</a>
+  <a href="biografia.html">Biografía</a>
+  <a href="news.html">NEWS</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
     </header>
 
     <main>
@@ -135,6 +221,7 @@
   </div>
 
   <script>
+    // Carrusel
     const images = document.querySelectorAll('.carousel img');
     let current = 0;
     setInterval(() => {
@@ -142,6 +229,23 @@
       current = (current + 1) % images.length;
       images[current].classList.add('active');
     }, 6000);
+
+    // Menú hamburguesa
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    const links = nav.querySelectorAll('a');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      toggle.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
