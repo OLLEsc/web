@@ -6,7 +6,8 @@
   <title>Contacto- Octavio Llorens</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
   <style>
-    body {
+ <style>
+   body {
       margin: 0;
       font-family: 'Libre Baskerville', serif;
       background: #f9f9f9;
@@ -18,13 +19,14 @@
       padding: 0 2rem;
     }
     header {
-      background: #f9f9f9;
+      background: #ffffff;
       color: #8a8787;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 0;
       border-bottom: 1px solid #ddd;
+      position: relative;
     }
     header h1 {
       font-family: 'Cinzel', serif;
@@ -41,7 +43,7 @@
       font-size: 1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: color 3s ease;
+      transition: color 0.3s ease;
     }
     nav a:hover {
       color: #555;
@@ -49,12 +51,14 @@
     nav {
       display: flex;
       align-items: center;
+      font-family: 'Cinzel', serif;
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
     main {
       padding: 0rem 0;
     }
     h2 {
-      text-align:justify
+      text-align: justify;
       font-family: 'Cinzel', serif;
       font-size: 1.1rem;
       margin-bottom: 1rem;
@@ -72,32 +76,89 @@
       font-size: 0.8rem;
       color: #666;
       margin-top: 3rem;
-     }
-    /* Estilo para el enlace de email */
-    .email-link {
-      color: #666;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
     }
-    .email-link:hover {
-      color: #333;
+
+    /* Botón hamburguesa */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      position: relative;
+      background: none;
+      border: none;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: rgb(181, 180, 180);
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      transition: 0.4s;
+    }
+    .menu-toggle span:nth-child(1) { top: 0; }
+    .menu-toggle span:nth-child(2) { top: 9px; }
+    .menu-toggle span:nth-child(3) { top: 18px; }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 9px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #f9f9f9;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        border-bottom: 1px solid #ddd;
+      }
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      nav a {
+        margin: 1rem 0;
+        padding: 0 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="contenedor">
-    <header>
-      <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
-      <nav>
-        <a href="index.html">Inicio</a>
-        <a href="obras.html">Obras</a>
-        <a href="biografia.html">Biografía</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="news.html">NEWS</a>
-      </nav>
-    </header>
+<header>
+  <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
 
+  <!-- Botón hamburguesa -->
+  <button class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Menú de navegación -->
+  <nav id="nav">
+    <a href="index.html">Inicio</a>
+    <a href="obras.html">Obras</a>
+    <a href="biografia.html">Biografía</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="news.html">NEWS</a>
+  </nav>
+</header>
     <main>
       <h2>
         Puedes ponerte en contacto conmigo mediante esta dirección:<br>
@@ -105,6 +166,67 @@
 
      </h2>
 <style>
+  /* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  background: none;
+  border: none;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: rgb(181, 180, 180);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: 0.4s;
+}
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f9f9f9;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav a {
+    margin: 1rem 0;
+    padding: 0 2rem;
+  }
+}
   @font-face {
     font-display: block;
     font-family: Roboto;
@@ -258,7 +380,7 @@
     }
   };
 
-  var AUTOHIDE = Boolean(1);
+  var AUTOHIDE = Boolean(1);  
 </script>
 
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
@@ -274,7 +396,22 @@
   </div>
 
   <script>
+    // Menú hamburguesa
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    const links = nav.querySelectorAll('a');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      toggle.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
-
