@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Biografía - Octavio Llorens</title>
@@ -58,9 +60,10 @@
     }
     h2 {
       text-align: justify;
-      font-family: 'Cinzel', serif;
+      font-family: Cambria, Cochin, Georgia, Times, serif;
       font-size: 1.1rem;
       margin-bottom: 1rem;
+      font-weight: normal
     }
     .caption {
       text-align: center;
@@ -142,6 +145,7 @@
     <header>
       <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
 
+
       <!-- Botón hamburguesa -->
       <button class="menu-toggle" id="menu-toggle">
         <span></span>
@@ -161,8 +165,51 @@
 
     <main>
       <h2>
-        Octavio Llorens, escultor nacido en Valencia.<br> 
+        Octavio Llorens Llavata, escultor valenciano, es licenciado en Bellas Artes por la Universitat Politècnica de València y posee un máster en Educación.<p><p/> Comenzó su formación artística a una edad temprana en diversas escuelas de arte y talleres de escultura en Valencia, posteriormente ampliando sus estudios en Italia perfeccionando su técnica.<p><p/> Su obra se caracteriza por un enfoque figurativo, especialmente en el retrato escultórico. Ha realizado diversas obras públicas en ciudades como Valencia e Italia, entre las que destaca la escultura de San Vicente Ferrer en la Plaza de los Niños de San Vicente Ferrer en Valencia, conmemorando el 600 aniversario del Colegio Imperial Niños Huérfanos de San Vicente Ferrer.<p><p/> Ha participado en exposiciones tanto en España como en Italia, mostrando su obra en espacios culturales de renombre. Entre sus proyectos recientes se encuentran el retrato conmemorativo de Ricardo Samper Ibáñez en el Ateneo Mercantil de Valencia, el retrato póstumo de Alberto Mora en una colección privada y la obra "Mater", reflejando su continuo interés por la figura humana y la expresión emocional.<br> 
       </h2>
+      <p></p>
+      <div class="centrar-imagen">
+  <img src="img/octavio.jpg" alt="Descripción de la imagen" width="250">
+</div>
+      <div class="enlaces-interes">
+  <p>Enlaces de interés:</p>
+  <a href="https://www.instagram.com/escultor.octaviollorens" target="_blank">
+    <i class="fab fa-instagram"></i> Instagram
+    
+  </a><p></p>
+  <a href="https://octaviollorens.blogspot.com" target="_blank">
+    <i class="fab fa-blogger"></i> Blog
+    <style>
+      
+  .enlaces-interes p {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .enlaces-interes a {
+    display: inline-block;
+    margin-right: 1em;
+    color: #000000;
+    text-decoration: none;
+    font-weight: normal;
+    transition: color 0.3s;
+  }
+
+  .enlaces-interes a:hover {
+    color: #555555;
+  }
+
+  .enlaces-interes i {
+    margin-right: 0.3em;
+  }
+  
+</style>
+
+  </a>
+</div>
+
     </main>
 
     <footer>
@@ -186,6 +233,7 @@
         toggle.classList.remove('active');
       });
     });
+    
   </script>
 </body>
 </html>
