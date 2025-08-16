@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News - Octavio Llorens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background: #f9f9f9;
+      color: #000;
+    }
+    .contenedor {
+      max-width: 1000px;
+      margin: 5rem auto 0 auto;
+      padding: 0 2rem;
+    }
+    header {
+      background: #f9f9f9;
+      color: #8a8787;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap; /* permite que los elementos bajen si no caben */
+    }
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 5vw, 1.8rem); /* se adapta al ancho de pantalla */
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      flex: 1 1 100%; /* en móviles ocupa toda la fila */
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+    nav a {
+      color: rgb(181, 180, 180);
+      text-decoration: none;
+      margin: 0.5rem 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #555;
+    }
+    main {
+      padding: 2rem 0;
+    }
+    .noticia {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+    .noticia h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .noticia p {
+      line-height: 1.6;
+      color: #444;
+    }
+    .fecha {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 3rem;
+    }
+
+    /* Ajustes extra para móviles muy pequeños */
+    @media (max-width: 480px) {
+      nav a {
+        font-size: 0.85rem;
+        margin: 0.3rem 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="obras.html">Obras</a>
+        <a href="biografia.html">Biografía</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="news.html">News</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="noticia">
+        <span class="fecha">9 de agosto de 2025</span>
+        <h2>Nueva Exposición </h2>
+        <p>Próximamente.</p>
+      </div>
+
+      <div class="noticia">
+        <span class="fecha">25 de julio de 2025</span>
+        <h2>Exposicion en Marte</h2>
+        <p>Octavio Llorens es un crack y por eso es el primer artista universal en exponer una colección en el planeta Marte. </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 OCTAVIO LLORENS. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>
