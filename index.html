@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,6 +12,52 @@
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
   <style>
+    <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      background: #fff;
+      color: #000;
+    }
+
+    /* Preloader ocupa toda la pantalla */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 2.8s ease, visibility 2.1s ease;
+    }
+
+    /* Logo animado */
+    #preloader img {
+      width: 500px;
+      animation: pulse 1.5 infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+    }
+
+    /* Ocultar suavemente */
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Contenido de la web */
+    #contenido {
+      padding: 50px;
+      text-align: center;
+      display: none;
+    }
     body {
       margin: 0;
       font-family: 'Libre Baskerville', serif;
@@ -183,6 +230,16 @@
   </style>
 </head>
 <body>
+   <!-- Preloader -->
+  <div id="preloader">
+    <img src="img/LOGOS/OLLESCBW.png" alt="Logo">
+  </div>
+
+  <!-- Contenido -->
+  <div id="contenido">
+    <h1></h1>
+    <p></p>
+  </div>
   <div class="contenedor">
     <header>
       <h1><a href="index.html" style="text-decoration:none; color:inherit;">OCTAVIO LLORENS</a></h1>
@@ -196,12 +253,9 @@
 
 <!-- Menú de navegación -->
 <nav id="nav">
-        <a href="index.html">Inicio</a>
-        <a href="obras.html">Obras</a>
-        <a href="biografia.html">Biografía</a>
-        <a href="news.html">News</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
+  <a href="index.html">Inicio</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
     </header>
 
     <main>
@@ -247,5 +301,18 @@
       });
     });
   </script>
+  <script>
+    window.addEventListener("load", function() {
+      const preloader = document.getElementById("preloader");
+      const contenido = document.getElementById("contenido");
+
+      // Mostrar contenido
+      contenido.style.display = "block";
+
+      // Ocultar preloader con efecto fade
+      preloader.classList.add("hidden");
+    });
+  </script>
+
 </body>
 </html>
