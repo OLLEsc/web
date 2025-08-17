@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inicio - Octavio Llorens</title>
@@ -227,6 +227,17 @@
       }
       nav a { margin: 1rem 0; padding: 0 2rem; }
     }
+     .correo {
+    color: #6c6a6a;        /* color negro */
+    text-decoration: underline;  /* quita subrayado */
+    font-weight: normal;      /* opcional: más visible */
+    text-align: justify;display:contents
+    
+  }
+
+  .correo:hover {
+    color: #555555;         /* cambia a gris al pasar el ratón */
+  }
   </style>
 </head>
 <body>
@@ -254,7 +265,6 @@
 <!-- Menú de navegación -->
 <nav id="nav">
   <a href="index.html">Inicio</a>
-  <a href="contacto.html">Contacto</a>
 </nav>
     </header>
 
@@ -266,13 +276,56 @@
           <img src="img/escultura3.jpg" alt="San Vicente Ferrer" />
         </div>
       </a>
-      <p class="caption">.</p>
+      <p>
+      <a href="mailto:tuemail@dominio.com" class="correo">escultor@octaviollorens.com</a><p/>
+       <div class="enlaces-interes">
+  <p>~</p>
+  <a href="https://www.instagram.com/escultor.octaviollorens" target="_blank">
+    <i class="fab fa-instagram"></i> Instagram 
+    
+  </a><p></p>
+  <a href="https://octaviollorens.blogspot.com" target="_blank">
+    <i class="fab fa-blogger"></i> Blog
+<style>
+      
+  .enlaces-interes p {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .enlaces-interes a {
+    display: inline-block;
+    margin-right: 1em;
+    color: #8a8787;
+    text-decoration: none;
+    font-weight: normal;
+    transition: color 0.3s;
+  }
+
+  .enlaces-interes a:hover {
+    color: #555555;
+  }
+
+  .enlaces-interes i {
+    margin-right: 0.3em;
+  }
+  
+</style>
+
+  </a>
+</div>
+
+    </main>
+      
     </main>
 
     <footer>
       <p>&copy; 2025 OCTAVIO LLORENS. Todos los derechos reservados.</p>
     </footer>
   </div>
+  
 
   <script>
     // Carrusel
@@ -313,6 +366,5 @@
       preloader.classList.add("hidden");
     });
   </script>
-
 </body>
 </html>
